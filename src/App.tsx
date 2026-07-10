@@ -11,6 +11,7 @@ import { Insights } from "./components/Insights";
 import { ImpactMatrix } from "./components/ImpactMatrix";
 import { MetricStrip } from "./components/MetricStrip";
 import { OpportunityPipeline } from "./components/OpportunityPipeline";
+import { OpportunityDrawer } from "./components/OpportunityDrawer";
 import { Roadmap } from "./components/Roadmap";
 import { Sidebar } from "./components/Sidebar";
 import { TranscriptModal } from "./components/TranscriptModal";
@@ -26,6 +27,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [selected, setSelected] = useState<string | null>("loa");
   const [active, setActive] = useState("analyze");
+  const [drawerOpen, setDrawerOpen] = useState(false);
   useEffect(() => {
     if (analysis) saveAnalysis(analysis);
   }, [analysis]);
@@ -82,6 +84,10 @@ export default function App() {
           }
         : a,
     );
+  const selectOpportunity = (id: string) => {
+    setSelected(id);
+    setDrawerOpen(true);
+  };
   const navigate = (id: string) => {
     setActive(id);
     if (id === "analyze") {
@@ -164,11 +170,11 @@ export default function App() {
           <OpportunityPipeline
             items={visible}
             selected={selected}
-            onSelect={setSelected}
+            onSelect={selectOpportunity}
             onChange={updateOpportunity}
           />
           <aside className="right-rail">
-            <ImpactMatrix items={visible} onSelect={setSelected} />
+            <ImpactMatrix items={visible} onSelect={selectOpportunity} />
             <Insights analysis={analysis} />
           </aside>
         </div>
@@ -193,6 +199,19 @@ export default function App() {
           onClose={() => setModal(false)}
         />
       )}
+      {drawerOpen &&
+        selected &&
+        analysis.automationOpportunities.find(
+          (item) => item.id === selected,
+        ) && (
+          <OpportunityDrawer
+            opportunity={analysis.automationOpportunities.find(
+              (item) => item.id === selected,
+            )!}
+            onClose={() => setDrawerOpen(false)}
+            onChange={(patch) => updateOpportunity(selected, patch)}
+          />
+        )}
     </div>
   );
 }

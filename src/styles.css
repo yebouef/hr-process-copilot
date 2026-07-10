@@ -722,6 +722,206 @@ input:focus-visible {
   font-size: 8px;
   flex: 0 0 auto;
 }
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(4, 18, 42, 0.42);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: flex-end;
+  animation: drawer-fade 0.2s ease;
+}
+.opportunity-drawer {
+  width: min(520px, 100%);
+  height: 100%;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: -18px 0 55px rgba(3, 20, 49, 0.2);
+  padding: 25px 26px 100px;
+  animation: drawer-slide 0.24s ease-out;
+  position: relative;
+}
+.opportunity-drawer > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.opportunity-drawer h2 {
+  margin: 8px 0 4px;
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: -0.35px;
+}
+.opportunity-drawer header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.drawer-priority {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 4px 7px;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.drawer-priority.high {
+  background: #ffebed;
+  color: #bd2639;
+}
+.drawer-priority.medium {
+  background: #fff1d8;
+  color: #8f5c00;
+}
+.drawer-priority.low {
+  background: #eaf0ff;
+  color: #2454ad;
+}
+.drawer-score-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 18px 0;
+}
+.drawer-score-grid > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e1e8f1;
+  border-radius: 9px;
+  padding: 11px 12px;
+  background: #f9fbfe;
+}
+.drawer-score-grid svg {
+  width: 18px;
+  color: var(--blue);
+}
+.drawer-score-grid small,
+.drawer-score-grid strong {
+  display: block;
+}
+.drawer-score-grid small {
+  color: var(--muted);
+  font-size: 8px;
+}
+.drawer-score-grid strong {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.drawer-section {
+  padding: 16px 0;
+  border-top: 1px solid #e8edf4;
+}
+.drawer-section h3 {
+  margin: 0 0 7px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  color: #526278;
+}
+.drawer-section p {
+  margin: 0;
+  color: #38475c;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.evidence-section blockquote {
+  margin: 0;
+  border-left: 3px solid var(--teal);
+  background: #f1faf9;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 14px;
+  color: #295855;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+}
+.solution-section strong {
+  color: var(--blue);
+  font-size: 13px;
+}
+.solution-section p {
+  margin-top: 7px;
+}
+.score-rationale > div {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 10px;
+  margin-top: 9px;
+}
+.score-rationale span {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.next-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.next-step > svg {
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--blue);
+  background: #eaf1ff;
+}
+.next-step small,
+.next-step strong {
+  display: block;
+}
+.next-step small {
+  color: var(--muted);
+  font-size: 8px;
+}
+.next-step strong {
+  font-size: 12px;
+  margin: 2px 0 5px;
+}
+.opportunity-drawer > footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 26px;
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+}
+.drawer-decision {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #08795d;
+  font-size: 9px;
+  font-weight: 700;
+}
+.drawer-decision svg {
+  width: 15px;
+}
+@keyframes drawer-slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes drawer-fade {
+  from {
+    background: rgba(4, 18, 42, 0);
+  }
+}
 .insights {
   padding-bottom: 12px;
 }
@@ -990,6 +1190,19 @@ input:focus-visible {
   }
 }
 @media (max-width: 760px) {
+  .opportunity-drawer {
+    padding: 20px 18px 112px;
+  }
+  .opportunity-drawer > footer {
+    padding: 12px 18px;
+    flex-wrap: wrap;
+  }
+  .opportunity-drawer > footer .button {
+    flex: 1;
+  }
+  .drawer-decision {
+    width: 100%;
+  }
   #brief,
   #opportunities,
   #roadmap {
