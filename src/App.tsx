@@ -12,6 +12,7 @@ import { ImpactMatrix } from "./components/ImpactMatrix";
 import { MetricStrip } from "./components/MetricStrip";
 import { OpportunityPipeline } from "./components/OpportunityPipeline";
 import { OpportunityDrawer } from "./components/OpportunityDrawer";
+import { HowToUseModal } from "./components/HowToUseModal";
 import { Roadmap } from "./components/Roadmap";
 import { Sidebar } from "./components/Sidebar";
 import { TranscriptModal } from "./components/TranscriptModal";
@@ -28,6 +29,7 @@ export default function App() {
   const [selected, setSelected] = useState<string | null>("loa");
   const [active, setActive] = useState("analyze");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
   useEffect(() => {
     if (analysis) saveAnalysis(analysis);
   }, [analysis]);
@@ -121,13 +123,24 @@ export default function App() {
             onChange={setTranscript}
             onDemo={setTranscript}
             onAnalyze={analyze}
+            onHowToUse={() => setShowGuide(true)}
+          />
+        )}
+        {showGuide && (
+          <HowToUseModal
+            onClose={() => setShowGuide(false)}
+            onStart={() => setShowGuide(false)}
           />
         )}
       </>
     );
   return (
     <div className="app-shell">
-      <Sidebar active={active} onNavigate={navigate} />
+      <Sidebar
+        active={active}
+        onNavigate={navigate}
+        onHowToUse={() => setShowGuide(true)}
+      />
       <main className="main">
         <header className="topbar">
           <div>
@@ -196,6 +209,7 @@ export default function App() {
           onChange={setTranscript}
           onDemo={setTranscript}
           onAnalyze={analyze}
+          onHowToUse={() => setShowGuide(true)}
           onClose={() => setModal(false)}
         />
       )}
@@ -212,6 +226,16 @@ export default function App() {
             onChange={(patch) => updateOpportunity(selected, patch)}
           />
         )}
+      {showGuide && (
+        <HowToUseModal
+          onClose={() => setShowGuide(false)}
+          onStart={() => {
+            setShowGuide(false);
+            setActive("analyze");
+            setModal(true);
+          }}
+        />
+      )}
     </div>
   );
 }

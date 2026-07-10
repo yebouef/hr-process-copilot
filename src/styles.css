@@ -732,6 +732,122 @@ input:focus-visible {
   justify-content: flex-end;
   animation: drawer-fade 0.2s ease;
 }
+.guide-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 18, 43, 0.68);
+  backdrop-filter: blur(6px);
+}
+.guide-modal {
+  width: min(760px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 28px 80px rgba(3, 19, 47, 0.38);
+  padding: 24px;
+}
+.guide-modal > header,
+.guide-modal > header > div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.guide-modal > header > div {
+  justify-content: flex-start;
+  gap: 13px;
+}
+.guide-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--blue);
+}
+.guide-icon svg {
+  width: 19px;
+}
+.guide-modal h2 {
+  margin: 1px 0 4px;
+  font-size: 22px;
+}
+.guide-modal header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.guide-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 22px;
+  margin: 20px 0 16px;
+}
+.guide-steps article {
+  min-height: 75px;
+  display: grid;
+  grid-template-columns: 23px 28px 1fr;
+  gap: 9px;
+  align-items: start;
+  padding: 13px 0;
+  border-top: 1px solid #e6ecf3;
+}
+.guide-number {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--navy);
+  font-size: 9px;
+  font-weight: 700;
+}
+.guide-steps article > svg {
+  width: 18px;
+  color: var(--blue);
+}
+.guide-steps h3 {
+  margin: 0 0 4px;
+  font-size: 11px;
+}
+.guide-steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.45;
+}
+.guide-privacy {
+  display: flex;
+  gap: 10px;
+  padding: 11px 13px;
+  border-radius: 8px;
+  background: #edf8f6;
+  color: #315f5a;
+  font-size: 9px;
+  line-height: 1.45;
+}
+.guide-privacy svg {
+  width: 18px;
+  flex: 0 0 auto;
+  color: var(--teal);
+}
+.guide-privacy strong {
+  display: block;
+  font-size: 10px;
+}
+.guide-modal > footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 17px;
+}
 .opportunity-drawer {
   width: min(520px, 100%);
   height: 100%;
@@ -1190,6 +1306,18 @@ input:focus-visible {
   }
 }
 @media (max-width: 760px) {
+  .guide-modal {
+    padding: 18px;
+  }
+  .guide-modal h2 {
+    font-size: 18px;
+  }
+  .guide-steps {
+    grid-template-columns: 1fr;
+  }
+  .guide-steps article {
+    min-height: auto;
+  }
   .opportunity-drawer {
     padding: 20px 18px 112px;
   }
