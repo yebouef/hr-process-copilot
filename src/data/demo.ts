@@ -1,4 +1,4 @@
-import type { Analysis } from '../types/analysis'
+import type { Analysis } from "../types/analysis";
 
 export const demoTranscript = `Maya Chen, HR Technology Director: Our HR operations team is spending too much time moving information between spreadsheets. Leave requests arrive by email and coordinators manually update a SharePoint tracker. Employees regularly ask for status updates.
 
@@ -6,43 +6,398 @@ Jordan Lee, People Analytics Manager: Turnover reporting takes several days each
 
 Priya Shah, Compensation Lead: Incentive compensation is also spreadsheet-heavy. Business leaders submit different templates, and our team checks formulas, follows up on errors, and emails approvals.
 
-Maya: During HR system outages and password reset spikes, someone writes status updates by hand. We also expect an acquisition next year and need a repeatable way to onboard employee data and validate quality. We use Power BI, SharePoint, Power Automate, Power Apps, Dataverse, and Microsoft Fabric.`
+Maya: During HR system outages and password reset spikes, someone writes status updates by hand. We also expect an acquisition next year and need a repeatable way to onboard employee data and validate quality. We use Power BI, SharePoint, Power Automate, Power Apps, Dataverse, and Microsoft Fabric.`;
 
 export const demoAnalysis: Analysis = {
-  meetingSummary: 'The HR technology team identified five automation opportunities across case management, compensation, analytics, communications, and acquisition onboarding. Leave-of-absence intake offers the clearest quick win, while compensation and turnover reporting could remove substantial recurring manual work.',
-  businessGoals: ['Reduce manual HR administration', 'Create trusted leadership reporting', 'Improve employee service visibility', 'Prepare repeatable acquisition processes'],
-  painPoints: ['Requests arrive through unstructured email', 'Teams reconcile inconsistent spreadsheets', 'Monthly turnover reporting is slow', 'Status communications depend on one person'],
-  systemsMentioned: ['Power Apps', 'Power Automate', 'SharePoint', 'Power BI', 'Dataverse', 'Microsoft Fabric'],
-  automationOpportunities: [
-    {id:'loa',title:'Leave-of-absence case intake',problem:'Requests arrive by email and status is maintained manually.',evidence:'Coordinators update a SharePoint tracker and answer repeated status questions.',affectedTeam:'HR Operations',recommendedSolution:'Power Apps + Power Automate + SharePoint',expectedOutcome:'Consistent intake, routing, and visible case status.',impactScore:5,effortScore:2,riskLevel:'High',estimatedTimeSaved:28,priority:'High',nextStep:'Map intake fields, routing rules, and access boundaries.',stage:'Discover',owner:'HR Operations',decision:'pending'},
-    {id:'comp',title:'Incentive compensation approvals',problem:'Business units exchange inconsistent spreadsheets and approvals by email.',evidence:'The compensation team checks formulas and follows up on template errors.',affectedTeam:'Total Rewards',recommendedSolution:'Power Apps + Power Automate + Dataverse',expectedOutcome:'Controlled submissions, validation, approvals, and audit history.',impactScore:5,effortScore:3,riskLevel:'High',estimatedTimeSaved:18,priority:'High',nextStep:'Inventory templates, calculations, exceptions, and approvers.',stage:'Validate',owner:'Compensation',decision:'pending'},
-    {id:'turnover',title:'Employee turnover dashboard',problem:'Analysts manually combine monthly HR exports.',evidence:'Leadership waits several days for consistent turnover reporting.',affectedTeam:'People Analytics',recommendedSolution:'Power BI + curated HR data layer',expectedOutcome:'Trusted, refreshable turnover insights with shared definitions.',impactScore:4,effortScore:3,riskLevel:'Medium',estimatedTimeSaved:12,priority:'High',nextStep:'Agree on turnover definitions, dimensions, and data quality rules.',stage:'Design',owner:'People Analytics',decision:'pending'},
-    {id:'comms',title:'HR system communications',problem:'Outage and password-reset notices are written and posted manually.',evidence:'Updates depend on an individual noticing demand and drafting a message.',affectedTeam:'HR Service Delivery',recommendedSolution:'Power Automate + SharePoint',expectedOutcome:'Faster, consistent service notices with an approval checkpoint.',impactScore:3,effortScore:1,riskLevel:'Low',estimatedTimeSaved:6,priority:'Medium',nextStep:'Define trigger events, templates, owners, and escalation paths.',stage:'Design',owner:'HR Technology',decision:'pending'},
-    {id:'acquisition',title:'Acquisition data onboarding',problem:'Employee data onboarding is rebuilt for each acquisition.',evidence:'The team expects another acquisition and needs repeatable validation.',affectedTeam:'HR Technology',recommendedSolution:'Microsoft Fabric + Power BI data-quality dashboard',expectedOutcome:'Repeatable ingestion, reconciliation, and exception visibility.',impactScore:4,effortScore:5,riskLevel:'High',estimatedTimeSaved:4,priority:'Low',nextStep:'Document source mappings, ownership, validation, and cutover controls.',stage:'Build',owner:'Data Engineering',decision:'pending'}
+  meetingSummary:
+    "The HR technology team identified five automation opportunities across case management, compensation, analytics, communications, and acquisition onboarding. Leave-of-absence intake offers the clearest quick win, while compensation and turnover reporting could remove substantial recurring manual work.",
+  businessGoals: [
+    "Reduce manual HR administration",
+    "Create trusted leadership reporting",
+    "Improve employee service visibility",
+    "Prepare repeatable acquisition processes",
   ],
-  risks: ['Transcripts may contain confidential employee or health information', 'Compensation data needs role-based access and audit history', 'AI findings require verification against the actual process', 'Recommendations must never drive employment decisions'],
-  followUpQuestions: ['How many leave requests are received each month?', 'Which compensation exceptions require human judgment?', 'Who owns the turnover metric definitions?', 'What communication approvals are required during an outage?', 'Which source systems are typical during an acquisition?'],
+  painPoints: [
+    "Requests arrive through unstructured email",
+    "Teams reconcile inconsistent spreadsheets",
+    "Monthly turnover reporting is slow",
+    "Status communications depend on one person",
+  ],
+  systemsMentioned: [
+    "Power Apps",
+    "Power Automate",
+    "SharePoint",
+    "Power BI",
+    "Dataverse",
+    "Microsoft Fabric",
+  ],
+  automationOpportunities: [
+    {
+      id: "loa",
+      title: "Leave-of-absence case intake",
+      problem: "Requests arrive by email and status is maintained manually.",
+      evidence:
+        "Coordinators update a SharePoint tracker and answer repeated status questions.",
+      affectedTeam: "HR Operations",
+      recommendedSolution: "Power Apps + Power Automate + SharePoint",
+      expectedOutcome: "Consistent intake, routing, and visible case status.",
+      impactScore: 5,
+      effortScore: 2,
+      riskLevel: "High",
+      estimatedTimeSaved: 28,
+      priority: "High",
+      nextStep: "Map intake fields, routing rules, and access boundaries.",
+      stage: "Discover",
+      owner: "HR Operations",
+      decision: "pending",
+    },
+    {
+      id: "comp",
+      title: "Incentive compensation approvals",
+      problem:
+        "Business units exchange inconsistent spreadsheets and approvals by email.",
+      evidence:
+        "The compensation team checks formulas and follows up on template errors.",
+      affectedTeam: "Total Rewards",
+      recommendedSolution: "Power Apps + Power Automate + Dataverse",
+      expectedOutcome:
+        "Controlled submissions, validation, approvals, and audit history.",
+      impactScore: 5,
+      effortScore: 3,
+      riskLevel: "High",
+      estimatedTimeSaved: 18,
+      priority: "High",
+      nextStep: "Inventory templates, calculations, exceptions, and approvers.",
+      stage: "Validate",
+      owner: "Compensation",
+      decision: "pending",
+    },
+    {
+      id: "turnover",
+      title: "Employee turnover dashboard",
+      problem: "Analysts manually combine monthly HR exports.",
+      evidence:
+        "Leadership waits several days for consistent turnover reporting.",
+      affectedTeam: "People Analytics",
+      recommendedSolution: "Power BI + curated HR data layer",
+      expectedOutcome:
+        "Trusted, refreshable turnover insights with shared definitions.",
+      impactScore: 4,
+      effortScore: 3,
+      riskLevel: "Medium",
+      estimatedTimeSaved: 12,
+      priority: "High",
+      nextStep:
+        "Agree on turnover definitions, dimensions, and data quality rules.",
+      stage: "Design",
+      owner: "People Analytics",
+      decision: "pending",
+    },
+    {
+      id: "comms",
+      title: "HR system communications",
+      problem:
+        "Outage and password-reset notices are written and posted manually.",
+      evidence:
+        "Updates depend on an individual noticing demand and drafting a message.",
+      affectedTeam: "HR Service Delivery",
+      recommendedSolution: "Power Automate + SharePoint",
+      expectedOutcome:
+        "Faster, consistent service notices with an approval checkpoint.",
+      impactScore: 3,
+      effortScore: 1,
+      riskLevel: "Low",
+      estimatedTimeSaved: 6,
+      priority: "Medium",
+      nextStep:
+        "Define trigger events, templates, owners, and escalation paths.",
+      stage: "Design",
+      owner: "HR Technology",
+      decision: "pending",
+    },
+    {
+      id: "acquisition",
+      title: "Acquisition data onboarding",
+      problem: "Employee data onboarding is rebuilt for each acquisition.",
+      evidence:
+        "The team expects another acquisition and needs repeatable validation.",
+      affectedTeam: "HR Technology",
+      recommendedSolution: "Microsoft Fabric + Power BI data-quality dashboard",
+      expectedOutcome:
+        "Repeatable ingestion, reconciliation, and exception visibility.",
+      impactScore: 4,
+      effortScore: 5,
+      riskLevel: "High",
+      estimatedTimeSaved: 4,
+      priority: "Low",
+      nextStep:
+        "Document source mappings, ownership, validation, and cutover controls.",
+      stage: "Build",
+      owner: "Data Engineering",
+      decision: "pending",
+    },
+  ],
+  risks: [
+    "Transcripts may contain confidential employee or health information",
+    "Compensation data needs role-based access and audit history",
+    "AI findings require verification against the actual process",
+    "Recommendations must never drive employment decisions",
+  ],
+  followUpQuestions: [
+    "How many leave requests are received each month?",
+    "Which compensation exceptions require human judgment?",
+    "Who owns the turnover metric definitions?",
+    "What communication approvals are required during an outage?",
+    "Which source systems are typical during an acquisition?",
+  ],
   roadmap: [
-    {period:'30 days',title:'Validate the opportunity',items:['Map the leave intake process', 'Confirm data owners and controls', 'Define success measures']},
-    {period:'60 days',title:'Prototype and pilot',items:['Build the intake prototype', 'Test routing and permissions', 'Pilot with HR Operations']},
-    {period:'90 days',title:'Launch and measure',items:['Complete production testing', 'Train process owners', 'Measure cycle time and adoption']}
-  ]
-}
+    {
+      period: "30 days",
+      title: "Validate the opportunity",
+      items: [
+        "Map the leave intake process",
+        "Confirm data owners and controls",
+        "Define success measures",
+      ],
+    },
+    {
+      period: "60 days",
+      title: "Prototype and pilot",
+      items: [
+        "Build the intake prototype",
+        "Test routing and permissions",
+        "Pilot with HR Operations",
+      ],
+    },
+    {
+      period: "90 days",
+      title: "Launch and measure",
+      items: [
+        "Complete production testing",
+        "Train process owners",
+        "Measure cycle time and adoption",
+      ],
+    },
+  ],
+};
 
-export interface DemoScenario { id:string; title:string; department:string; focus:string; transcript:string; analysis:Analysis }
-const scenario = (id:string,title:string,department:string,focus:string,transcript:string,summary:string,systems:string[],titles:string[]):DemoScenario => {
-  const analysis=structuredClone(demoAnalysis)
-  analysis.meetingSummary=summary
-  analysis.systemsMentioned=systems
-  analysis.automationOpportunities=analysis.automationOpportunities.slice(0,titles.length).map((item,index)=>({...item,id:`${id}-${index}`,title:titles[index],affectedTeam:department,owner:department,decision:'pending'}))
-  analysis.followUpQuestions=[`Who owns the ${focus.toLowerCase()} process today?`,'What volume and cycle-time baseline should we use?','Which data requires restricted access?','What outcome would make the pilot successful?']
-  return {id,title,department,focus,transcript,analysis}
+export interface DemoScenario {
+  id: string;
+  title: string;
+  department: string;
+  focus: string;
+  transcript: string;
+  analysis: Analysis;
 }
+const scenarioProfiles = {
+  analytics: [
+    {
+      impactScore: 5,
+      effortScore: 2,
+      estimatedTimeSaved: 10,
+      priority: "High",
+      stage: "Discover",
+      riskLevel: "Medium",
+    },
+    {
+      impactScore: 5,
+      effortScore: 5,
+      estimatedTimeSaved: 24,
+      priority: "High",
+      stage: "Validate",
+      riskLevel: "High",
+    },
+    {
+      impactScore: 4,
+      effortScore: 3,
+      estimatedTimeSaved: 12,
+      priority: "Medium",
+      stage: "Design",
+      riskLevel: "Medium",
+    },
+  ],
+  service: [
+    {
+      impactScore: 5,
+      effortScore: 2,
+      estimatedTimeSaved: 32,
+      priority: "High",
+      stage: "Design",
+      riskLevel: "High",
+    },
+    {
+      impactScore: 3,
+      effortScore: 4,
+      estimatedTimeSaved: 18,
+      priority: "Medium",
+      stage: "Validate",
+      riskLevel: "High",
+    },
+    {
+      impactScore: 2,
+      effortScore: 1,
+      estimatedTimeSaved: 8,
+      priority: "Low",
+      stage: "Build",
+      riskLevel: "Low",
+    },
+  ],
+  acquisition: [
+    {
+      impactScore: 4,
+      effortScore: 3,
+      estimatedTimeSaved: 36,
+      priority: "High",
+      stage: "Discover",
+      riskLevel: "High",
+    },
+    {
+      impactScore: 5,
+      effortScore: 5,
+      estimatedTimeSaved: 28,
+      priority: "High",
+      stage: "Validate",
+      riskLevel: "High",
+    },
+    {
+      impactScore: 3,
+      effortScore: 2,
+      estimatedTimeSaved: 14,
+      priority: "Medium",
+      stage: "Design",
+      riskLevel: "Medium",
+    },
+  ],
+  governance: [
+    {
+      impactScore: 4,
+      effortScore: 1,
+      estimatedTimeSaved: 12,
+      priority: "High",
+      stage: "Build",
+      riskLevel: "Medium",
+    },
+    {
+      impactScore: 5,
+      effortScore: 4,
+      estimatedTimeSaved: 10,
+      priority: "High",
+      stage: "Design",
+      riskLevel: "High",
+    },
+    {
+      impactScore: 2,
+      effortScore: 3,
+      estimatedTimeSaved: 8,
+      priority: "Low",
+      stage: "Discover",
+      riskLevel: "Medium",
+    },
+  ],
+} as const;
+const scenario = (
+  id: string,
+  title: string,
+  department: string,
+  focus: string,
+  transcript: string,
+  summary: string,
+  systems: string[],
+  titles: string[],
+): DemoScenario => {
+  const analysis = structuredClone(demoAnalysis);
+  const profiles = scenarioProfiles[id as keyof typeof scenarioProfiles];
+  analysis.meetingSummary = summary;
+  analysis.systemsMentioned = systems;
+  analysis.automationOpportunities = analysis.automationOpportunities
+    .slice(0, titles.length)
+    .map((item, index) => ({
+      ...item,
+      id: `${id}-${index}`,
+      title: titles[index],
+      affectedTeam: department,
+      owner: department,
+      decision: "pending",
+      ...profiles[index],
+    }));
+  analysis.followUpQuestions = [
+    `Who owns the ${focus.toLowerCase()} process today?`,
+    "What volume and cycle-time baseline should we use?",
+    "Which data requires restricted access?",
+    "What outcome would make the pilot successful?",
+  ];
+  return { id, title, department, focus, transcript, analysis };
+};
 
-export const demoScenarios:DemoScenario[]=[
-  {id:'automation',title:'HR automation discovery',department:'HR Technology',focus:'Broad process portfolio',transcript:demoTranscript,analysis:demoAnalysis},
-  scenario('analytics','Turnover analytics modernization','People Analytics','Data and dashboards',`Elena Brooks, Chief People Officer: Leaders receive different turnover numbers depending on which spreadsheet they open. We need one definition and a view by region, role, and tenure.\n\nMarcus Hill, People Analytics Lead: Each month I export three UKG files, join them in Excel, correct job-history gaps, and email a PDF. It takes almost three days. UKG data now lands in Microsoft Fabric, but the gold layer needs validation.\n\nElena: Managers need driver insights without exposing employee-level details. We use Fabric, Power BI, Excel, and UKG.`,`People Analytics needs a governed turnover product that replaces multi-file Excel reconciliation with a validated Fabric model and privacy-aware Power BI dashboard.`,['UKG','Microsoft Fabric','Power BI','Excel'],['Turnover metric contract','UKG turnover data pipeline','Privacy-aware turnover dashboard']),
-  scenario('service','Employee service delivery','HR Operations','Intake and communications',`Nina Patel, HR Operations Manager: Employees email a shared mailbox for employment letters, password help, payroll questions, and policy requests. Two coordinators manually classify everything and copy status into SharePoint.\n\nOwen Reed, Service Desk Lead: During outages we answer the same question repeatedly. We need automatic acknowledgements, routing, service-level alerts, and approved status messages. Sensitive cases must remain private.\n\nNina: We use Outlook, SharePoint, Teams, Power Apps, and Power Automate.`,`HR Service Delivery can reduce shared-mailbox work through structured intake, assisted classification, routing, acknowledgements, and approved outage communications.`,['Outlook','SharePoint','Teams','Power Apps','Power Automate'],['Employee service request intake','AI-assisted request triage','Outage communications workflow']),
-  scenario('acquisition','Acquisition data readiness','HR Program Office','Migration and data quality',`Avery Morgan, HR Program Director: We are acquiring a regional bank with 340 employees. Their employee, job, compensation, and benefit files use different codes. Every acquisition starts with a new spreadsheet mapping exercise.\n\nSofia Kim, HR Data Architect: Files arrive securely, then analysts reconcile counts and exceptions manually. We need repeatable mappings, validation rules, sign-offs, and a cutover dashboard. Payroll and compensation errors are the highest risk.\n\nAvery: We use Microsoft Fabric, Power BI, SharePoint, and Power Automate.`,`The acquisition team needs a reusable employee-data onboarding framework with controlled mappings, automated reconciliation, exception ownership, and visible cutover readiness.`,['Microsoft Fabric','Power BI','SharePoint','Power Automate'],['Reusable data mapping registry','Acquisition data-quality controls','Cutover readiness dashboard']),
-  scenario('governance','Responsible AI governance','HR Technology','Risk and approvals',`Daniel Cho, HR Technology Manager: Teams are experimenting with Copilot and building agents, but we do not have a consistent intake or review process. People may paste employee information into prompts without understanding the risk.\n\nAmara Lewis, Privacy Partner: We need use-case registration, data classification, human-review requirements, testing evidence, and an approval trail. AI must never rank employees or make employment decisions.\n\nDaniel: We use Copilot Studio, Power Platform, SharePoint, Purview, and Teams.`,`HR needs a lightweight responsible-AI intake and approval workflow that captures use cases, classifies data, documents testing, and enforces human accountability.`,['Copilot Studio','Power Platform','SharePoint','Microsoft Purview','Teams'],['HR AI use-case registry','Risk-tiered approval workflow','Agent evaluation scorecard'])
-]
+export const demoScenarios: DemoScenario[] = [
+  {
+    id: "automation",
+    title: "HR automation discovery",
+    department: "HR Technology",
+    focus: "Broad process portfolio",
+    transcript: demoTranscript,
+    analysis: demoAnalysis,
+  },
+  scenario(
+    "analytics",
+    "Turnover analytics modernization",
+    "People Analytics",
+    "Data and dashboards",
+    `Elena Brooks, Chief People Officer: Leaders receive different turnover numbers depending on which spreadsheet they open. We need one definition and a view by region, role, and tenure.\n\nMarcus Hill, People Analytics Lead: Each month I export three UKG files, join them in Excel, correct job-history gaps, and email a PDF. It takes almost three days. UKG data now lands in Microsoft Fabric, but the gold layer needs validation.\n\nElena: Managers need driver insights without exposing employee-level details. We use Fabric, Power BI, Excel, and UKG.`,
+    `People Analytics needs a governed turnover product that replaces multi-file Excel reconciliation with a validated Fabric model and privacy-aware Power BI dashboard.`,
+    ["UKG", "Microsoft Fabric", "Power BI", "Excel"],
+    [
+      "Turnover metric contract",
+      "UKG turnover data pipeline",
+      "Privacy-aware turnover dashboard",
+    ],
+  ),
+  scenario(
+    "service",
+    "Employee service delivery",
+    "HR Operations",
+    "Intake and communications",
+    `Nina Patel, HR Operations Manager: Employees email a shared mailbox for employment letters, password help, payroll questions, and policy requests. Two coordinators manually classify everything and copy status into SharePoint.\n\nOwen Reed, Service Desk Lead: During outages we answer the same question repeatedly. We need automatic acknowledgements, routing, service-level alerts, and approved status messages. Sensitive cases must remain private.\n\nNina: We use Outlook, SharePoint, Teams, Power Apps, and Power Automate.`,
+    `HR Service Delivery can reduce shared-mailbox work through structured intake, assisted classification, routing, acknowledgements, and approved outage communications.`,
+    ["Outlook", "SharePoint", "Teams", "Power Apps", "Power Automate"],
+    [
+      "Employee service request intake",
+      "AI-assisted request triage",
+      "Outage communications workflow",
+    ],
+  ),
+  scenario(
+    "acquisition",
+    "Acquisition data readiness",
+    "HR Program Office",
+    "Migration and data quality",
+    `Avery Morgan, HR Program Director: We are acquiring a regional bank with 340 employees. Their employee, job, compensation, and benefit files use different codes. Every acquisition starts with a new spreadsheet mapping exercise.\n\nSofia Kim, HR Data Architect: Files arrive securely, then analysts reconcile counts and exceptions manually. We need repeatable mappings, validation rules, sign-offs, and a cutover dashboard. Payroll and compensation errors are the highest risk.\n\nAvery: We use Microsoft Fabric, Power BI, SharePoint, and Power Automate.`,
+    `The acquisition team needs a reusable employee-data onboarding framework with controlled mappings, automated reconciliation, exception ownership, and visible cutover readiness.`,
+    ["Microsoft Fabric", "Power BI", "SharePoint", "Power Automate"],
+    [
+      "Reusable data mapping registry",
+      "Acquisition data-quality controls",
+      "Cutover readiness dashboard",
+    ],
+  ),
+  scenario(
+    "governance",
+    "Responsible AI governance",
+    "HR Technology",
+    "Risk and approvals",
+    `Daniel Cho, HR Technology Manager: Teams are experimenting with Copilot and building agents, but we do not have a consistent intake or review process. People may paste employee information into prompts without understanding the risk.\n\nAmara Lewis, Privacy Partner: We need use-case registration, data classification, human-review requirements, testing evidence, and an approval trail. AI must never rank employees or make employment decisions.\n\nDaniel: We use Copilot Studio, Power Platform, SharePoint, Purview, and Teams.`,
+    `HR needs a lightweight responsible-AI intake and approval workflow that captures use cases, classifies data, documents testing, and enforces human accountability.`,
+    [
+      "Copilot Studio",
+      "Power Platform",
+      "SharePoint",
+      "Microsoft Purview",
+      "Teams",
+    ],
+    [
+      "HR AI use-case registry",
+      "Risk-tiered approval workflow",
+      "Agent evaluation scorecard",
+    ],
+  ),
+];
