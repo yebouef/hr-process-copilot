@@ -1,0 +1,3 @@
+import { ArrowRight, CalendarDays } from 'lucide-react'
+import type { RoadmapItem } from '../types/analysis'
+export function Roadmap({items}:{items:RoadmapItem[]}){return <section className="panel roadmap" id="roadmap"><header className="section-head"><h2>Recommended 30 / 60 / 90 day roadmap</h2></header><div className="roadmap-grid">{items.map((r,i)=><div className={`roadmap-step step-${i+1}`} key={r.period}><div><CalendarDays size={17}/><strong>{r.period}</strong></div><h3>{r.title}</h3><ul>{r.items.map(x=><li key={x}>{x}</li>)}</ul>{i<items.length-1&&<ArrowRight className="roadmap-arrow"/>}</div>)}</div></section>}

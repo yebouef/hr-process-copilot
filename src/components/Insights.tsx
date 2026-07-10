@@ -1,0 +1,3 @@
+import { ShieldAlert } from 'lucide-react'
+import type { Analysis } from '../types/analysis'
+export function Insights({analysis}:{analysis:Analysis}){return <section className="panel insights"><header className="section-head"><h2>Meeting insights</h2></header><h3>Systems mentioned</h3><div className="tags">{analysis.systemsMentioned.map(s=><span key={s}>{s}</span>)}</div><h3>Follow-up questions</h3><ul>{analysis.followUpQuestions.slice(0,4).map(q=><li key={q}>{q}</li>)}</ul><div className="risk-note"><ShieldAlert size={17}/><span><strong>Sensitive HR context</strong> Confirm permissions and data boundaries before prototyping.</span></div></section>}
